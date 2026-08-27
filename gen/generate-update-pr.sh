@@ -10,7 +10,7 @@ git switch -c "${head_branch}"
 
 "${HERE}/update-config.sh"
 
-if git status --porcelain | grep -e '^\s*M\*\.config\.json' ; then
+if git status --porcelain | grep -E -e '^\s*M\s*\.config\.json' ; then
   git add "${HERE}/../.config.json"
   git commit -S -m "Update generator config"
   git push origin "${head_branch}"
