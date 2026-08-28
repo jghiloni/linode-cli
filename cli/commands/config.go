@@ -8,7 +8,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/jghiloni/linode-cli/cli/runtime"
+	"github.com/jghiloni/linodectl/cli/runtime"
 	"github.com/spf13/cobra"
 )
 

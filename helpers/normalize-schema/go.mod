@@ -1,4 +1,4 @@
-module normalize-schema
+module github.com/jghiloni/linodectl/helpers/normalize-schema
 
 go 1.26.7
 

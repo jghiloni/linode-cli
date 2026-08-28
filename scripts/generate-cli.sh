@@ -55,4 +55,4 @@ gh release download "${GEN_TOOL_VERSION}" -O - -p "*_${OS}_${ARCH}.tar.gz" -R "$
 install -m 0755 "${TMP_DIR}/onlycli" "${INSTALL_DIR}"
 ${ONLYCLI} version
 set -x
-${ONLYCLI} generate --module "github.com/jghiloni/linode-cli/cli" --name "linodectl" --out "${HERE}/../cli" --spec "${TMPSPEC}"
+${ONLYCLI} generate --module "github.com/jghiloni/linodectl/cli" --name "linodectl" --out "${HERE}/../cli" --spec "${TMPSPEC}"

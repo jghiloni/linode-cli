@@ -1,6 +1,6 @@
 {
   "name": "linodectl",
-  "module": "github.com/jghiloni/linode-cli/cli",
+  "module": "github.com/jghiloni/linodectl/cli",
   "api_repository": "linode/linode-api-openapi",
   "gen_tool_repository": "OnlyCLI/OnlyCLI",
   "api_version": "release-20260527",

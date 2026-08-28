@@ -2,7 +2,7 @@
 
 package main
 
-import "github.com/jghiloni/linode-cli/cli/commands"
+import "github.com/jghiloni/linodectl/cli/commands"
 
 func main() {
 	commands.Execute()

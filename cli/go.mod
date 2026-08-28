@@ -1,4 +1,4 @@
-module github.com/jghiloni/linode-cli/cli
+module github.com/jghiloni/linodectl/cli
 
 go 1.22
 
