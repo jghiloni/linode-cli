@@ -1,0 +1,6 @@
+{
+  "name": "linodectl",
+  "module": "github.com/jghiloni/linodectl",
+  "api_repository": "linode/linode-api-openapi",
+  "api_version": "release-20260527"
+}

@@ -1,0 +1,59 @@
+## linodectl nodebalancers put-node-balancer
+
+Update a NodeBalancer
+
+### Synopsis
+
+Updates information about a NodeBalancer you can access. > construction > > You can configure UDP on the same NodeBalancer that also uses TCP, HTTP, or HTTPS, but only when managing it through the API. If UDP is configured and you make changes to the TCP, HTTP or HTTPS settings in Cloud Manager, the existing UDP configuration will be overwritten. This is because Cloud Manager doesn't currently support UDP. **Permissions and scopes** To call this operation, you need permissions, based on the model you're using: - **Identity and access permissions**. Your user needs a role with these permissions. [Learn more](https://techdocs.akamai.com/cloud-computing/docs/identity-access-cm-available-roles). - Permissions: `update_nodebalancer` - **OAuth scopes**. Your user needs these scopes assigned. [Learn more](https://techdocs.akamai.com/linode-api/reference/get-started#oauth). - Scopes: `nodebalancers:read_write` **CLI** ```shell linode-cli nodebalancers update 12345 \ --label balancer12345 \ --client_conn_throttle 0 ``` [Learn more](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-the-linode-cli)
+
+```
+linodectl nodebalancers put-node-balancer [flags]
+```
+
+### Options
+
+```
+      --api-version v4             __Enum__ Call either the v4 URL, or `v4beta` for operations still in Beta.
+      --client-conn-throttle 0     Throttle TCP connections per second for TCP, HTTP, and HTTPS configurations. Set to 0 (zero) to disable throttling.
+      --created string             __Read-only__ When this NodeBalancer was created.
+      --data string                Request body JSON, @file, or @- for stdin
+  -h, --help                       help for put-node-balancer
+      --hostname string            __Read-only__ This NodeBalancer's hostname, beginning with its IP address and ending with _.ip.linodeusercontent.com_.
+      --id string                  __Read-only__ This NodeBalancer's unique ID.
+      --ipv4 string                __Filterable__, __Read-only__ This NodeBalancer's public IPv4 address.
+      --ipv6 string                __Read-only__ This NodeBalancer's public IPv6 address.
+      --label string               __Filterable__ This NodeBalancer's label. These must be unique on your Account.
+      --lke-cluster.id string      The ID of the related LKE cluster.
+      --lke-cluster.label string   The label of the related LKE cluster.
+      --lke-cluster.type string    __Read-only__ The type for LKE clusters.
+      --lke-cluster.url string     The URL where you can access the related LKE cluster.
+      --locks cannot_delete        __Beta__, __Filterable__, __Read-only__ Indicates if this NodeBalancer is protected by a lock to prevent accidental deletion. If the NodeBalancer has a cannot_delete lock, it can't be deleted, but its configurations and backend nodes can. If the NodeBalancer has a `cannot_delete_with_subresources` lock, both the NodeBalancer and attached resources such as configurations and backend nodes can't be deleted. Only account administrators can remove locks using the [Delete a resource lock](https://techdocs.akamai.com/linode-api/reference/delete-resource-lock) operation.
+      --node-balancer-id string    The ID of the NodeBalancer.
+      --region string              __Filterable__, __Read-only__ The Region where this NodeBalancer is located. NodeBalancers only support backends in the same Region.
+      --tags string                __Filterable__ An array of Tags applied to this object. Tags are for organizational purposes only.
+      --transfer.in string         __Read-only__ The total outbound transfer, in MB, used for this NodeBalancer this month.
+      --transfer.out string        __Read-only__ The total inbound transfer, in MB, used for this NodeBalancer this month.
+      --transfer.total string      __Read-only__ The total transfer, in MB, used by this NodeBalancer this month.
+      --type string                __Read-only__ The type of NodeBalancer.
+      --updated string             __Read-only__ When this NodeBalancer was last updated.
+```
+
+### Options inherited from parent commands
+
+```
+      --dry-run            Print HTTP request without sending
+      --format string      Output format: json, pretty, yaml, jsonl, table, csv, raw (default "json")
+      --max-retries int    Max retry attempts for 429/5xx errors (0 = no retry)
+      --page-limit int     Max pages to fetch (auto-detects Link, cursor, offset, page-number schemes)
+      --profile string     Configuration profile name
+      --stream             Stream response line-by-line (SSE / NDJSON)
+      --template string    Go template string for custom output formatting
+      --transform string   GJSON expression to filter/transform JSON output
+      --verbose            Log HTTP request/response details to stderr
+```
+
+### SEE ALSO
+
+* [linodectl nodebalancers](./index.md)	 - nodebalancers operations
+
+###### Auto generated by spf13/cobra on 31-Aug-2026

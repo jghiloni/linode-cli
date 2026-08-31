@@ -1,0 +1,52 @@
+## linodectl lke-clusters post-lke-cluster
+
+Create a Kubernetes cluster
+
+### Synopsis
+
+Creates a Kubernetes cluster. The Kubernetes cluster will be created asynchronously. You can use the events system to determine when the Kubernetes cluster is ready to use. Please note that it often takes 2-5 minutes before the [Kubernetes API endpoints](https://techdocs.akamai.com/linode-api/reference/get-lke-cluster-api-endpoints) and the [Kubeconfig file](https://techdocs.akamai.com/linode-api/reference/get-lke-cluster-kubeconfig) for the new cluster are ready. **Permissions and scopes** To call this operation, you need permissions, based on the model you're using: - **Identity and access permissions**. Your user needs a role with these permissions. [Learn more](https://techdocs.akamai.com/cloud-computing/docs/identity-access-cm-available-roles). - Roles: `account_lkecluster_creator` - **OAuth scopes**. Your user needs these scopes assigned. [Learn more](https://techdocs.akamai.com/linode-api/reference/get-started#oauth). - Scopes: `lke:read_write` **CLI** ```shell linode-cli lke cluster-create \ --label cluster12345 \ --region us-central \ --k8s_version 1.33 \ --apl_enabled false \ --control_plane.high_availability true \ --node_pools.type g6-standard-4 --node_pools.count 6 \ --node_pools.type g6-standard-8 --node_pools.count 3 \ --node_pools.autoscaler.enabled true \ --node_pools.autoscaler.max 12 \ --node_pools.autoscaler.min 3 \ --tags ecomm ``` [Learn more](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-the-linode-cli)
+
+```
+linodectl lke-clusters post-lke-cluster [flags]
+```
+
+### Options
+
+```
+      --api-version v4                                __Enum__ Call either the v4 URL, or `v4beta` for operations still in Beta.
+      --apl-enabled false                             __Write-once__ Indicates whether the Akamai App Platform is installed during creation of the LKE cluster. It defaults to false. If set to `true`, `control_plane.high_availability` also needs to be `true`. Automatic installation of the App Platform is only possible when creating a new cluster (not when modifying existing clusters).
+      --control-plane.acl enabled                     Defines settings related to the IP-based ACL of the LKE cluster. The object requires the enabled and `addresses` keys. It also supports the optional key `revision-id`. The default policy is set to `ALLOW`, so that access controls are disabled. An empty object value (`{}`) sets default elements.
+      --control-plane.audit-logs-enabled apiVersion   __Beta__, __LKE Enterprise__ Enables audit logs on the cluster's control plane. These logs provide detailed information about user access and the operations performed on the cluster, which can be useful for security and compliance purposes. > construction > > This field is available as part of the beta API and can only be used by accounts with access to LKE Enterprise. Call the URL with the apiVersion path parameter set to `v4beta`. (default "false")
+      --control-plane.high-availability false         Enables High Availability for the cluster's control plane components. It defaults to false. Enabling High Availability for LKE is an irreversible change. (default "false")
+      --data string                                   Request body JSON, @file, or @- for stdin
+  -h, --help                                          help for post-lke-cluster
+      --k8s-version <major>.<minor>                   __Filterable__ The desired Kubernetes version for this Kubernetes cluster in the format of <major>.<minor>. The latest supported patch version is deployed.
+      --label 0xE382AB                                __Filterable__ This Kubernetes cluster's unique label for display purposes only. Labels have the following constraints: - UTF-8 characters will be returned by the API using escape sequences of their Unicode code points. For example, the Japanese character _か_ is 3 bytes in UTF-8 (0xE382AB). Its Unicode code point is 2 bytes (`0x30AB`). APIv4 supports this character and the API will return it as the escape sequence using six 1 byte characters which represent 2 bytes of Unicode code point (`"\u30ab"`). - 4 byte UTF-8 characters are not supported. - If the label is entirely composed of UTF-8 characters, the API response will return the code points using up to 193 1 byte characters.
+      --node-pools string                             
+      --region string                                 __Filterable__ This Kubernetes cluster's location.
+      --stack-type apiVersion                         __Beta__, __LKE Enterprise__ The networking stack type of the Kubernetes cluster. This specifies that the cluster is IPv4 only (default) or supports both IPv4 and IPv6 (dual-stack). > construction > > This field is available as part of the beta API and can only be used by accounts with access to LKE Enterprise. Call the URL with the apiVersion path parameter set to `v4beta`. (default "ipv4")
+      --subnet-id vpc_id                              __Beta__, __LKE Enterprise__ The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must have both IPv4 and IPv6 enabled (dual-stack). When this field is specified, the cluster is deployed to the given subnet and its corresponding VPC. To specify a VPC and have a subnet auto-allocated, use vpc_id instead. If `subnet_id` and `vpc_id` are both unspecified, a new VPC and subnet are auto-allocated for the cluster. > construction > > This field is available as part of the beta API and can only be used by accounts with access to LKE Enterprise. Call the URL with the `apiVersion` path parameter set to `v4beta`.
+      --tags string                                   __Filterable__ An array of tags applied to the Kubernetes cluster. Tags are for organizational purposes only.
+      --tier standard                                 __Beta__, __Filterable__ The desired Kubernetes tier, either standard or `enterprise`. > construction > > This field is available as part of the beta API. Call the URL with the `apiVersion` path parameter set to `v4beta`.
+      --vpc-id subnet_id                              __Beta__, __LKE Enterprise__ The ID of the VPC to use for the Kubernetes cluster. An appropriately sized subnet is auto-allocated. To specify an existing subnet, use subnet_id instead. If `subnet_id` and `vpc_id` are both unspecified, a new VPC and subnet are auto-allocated for the cluster. > construction > > This field is available as part of the beta API and can only be used by accounts with access to LKE Enterprise. Call the URL with the `apiVersion` path parameter set to `v4beta`.
+```
+
+### Options inherited from parent commands
+
+```
+      --dry-run            Print HTTP request without sending
+      --format string      Output format: json, pretty, yaml, jsonl, table, csv, raw (default "json")
+      --max-retries int    Max retry attempts for 429/5xx errors (0 = no retry)
+      --page-limit int     Max pages to fetch (auto-detects Link, cursor, offset, page-number schemes)
+      --profile string     Configuration profile name
+      --stream             Stream response line-by-line (SSE / NDJSON)
+      --template string    Go template string for custom output formatting
+      --transform string   GJSON expression to filter/transform JSON output
+      --verbose            Log HTTP request/response details to stderr
+```
+
+### SEE ALSO
+
+* [linodectl lke-clusters](./index.md)	 - lke-clusters operations
+
+###### Auto generated by spf13/cobra on 31-Aug-2026
