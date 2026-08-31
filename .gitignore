@@ -37,3 +37,4 @@ go.work.sum
 *.bak
 openapi*
 /site
+.DS_Store
